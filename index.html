@@ -13,27 +13,113 @@
         <p>
             Sydney the oldest, biggest, and most beautiful of all Australian cities, lies amid a seductive intermingling of land and sea. The <b>Sydney Harbour Bridge</b> was the city's best-known landmark prior to construction of the <b>Sydney Opera House</b>.
         </p>
-        ---
+        <hr size="3" width="100%" color="black">
+    </hr>
+      <h2>Direction from Maryville to los angeles.</h1>
+      <ol>
+          <li>
+               First book a cab from maryville to nearest airport.</li>
+  <li> After reaching the airport check in your respective flight.</li>
+  <li> Collect the boarding pass and reach your destination in the flight.</li>
+          
+      </ol>
+      <h2>
+        Items to carry for the trip
+      </h2>
+    <ul>
+        <li>clothes</li>
+         <li>jeans</li>  
+         <li>shirts</li>
+         <li>Skincare</li> 
+         <li>Bodycream</li>
+         <li>Handcream</li>
+         <li>Moisturizer</li>
+         <li>Bodybutter</li>
+         <li>Food</li>
+         <li>camera</li>
+         <li>shoes</li>
+        
+    </ul>
+<a href="C:\Users\S544720\Documents\GitHub\webapps-f21-assignment-3-vinuthnachowdary/aboutme.html">aboutme</a>
 
-# Direction from Maryville to los angeles.
-1. First book a cab from maryville to nearest airport.
-   1. After reaching the airport check in your respective flight.
-   2. Collect the boarding pass and reach your destination in the flight.
+<hr size="3" width="100%" color="black"></hr>
+<h2>Table creation with food and drinks</h2>
 
-# Items to carry for the trip
-* clothes
-  * jeans
-  * shirts
-* SkinCare
-  * Bodycream
-  * Handcream
-  * Moisturizer
-  * Handcream
-  * Bodybutter
-* food
-* camera
-* shoes
+<table border="1">
+   
+    <tr>
+      <th>Food/Drink</th>
+      <th>Location</th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <td>chicken taco</td>
+      <td>taco bell</td>
+      <td>$3.50</td>
+    </tr>
+    <tr>
+      <td>vanilla milkshake</td>
+      <td>chik fil a</td>
+      <td>$4.50</td>
+    </tr>
+    <tr>
+        <td>chalupa</td>
+        <td>taco bell</td>
+        <td>$5.50</td>
+      </tr>
+      <tr>
+        <td>pizza</td>
+        <td>pizzahut</td>
+        <td>$6.50</td>
+      </tr>
+  </table>
+  <hr size="3" width="100%" color="black">
+</hr>
+  <h2>Prim's Algorithm</h1>
+<p>Prim's algorithm basically follows the greedy algorithm approach to find the optimal solution. To find the minimum spanning tree using prim's algorithm, we will choose a source node and keep adding the edges with the lowest weight.</p>
+<a href = "https://favtutor.com/blogs/prims-algorithm-python">link for the definition</a>
+<pre>
+    int n;
+vector<vector<int>> adj; // adjacency matrix of graph
+const int INF = 1000000000; // weight INF means there is no edge
 
+struct Edge {
+    int w = INF, to = -1;
+};
+
+void prim() {
+    int total_weight = 0;
+    vector<bool> selected(n, false);
+    vector<Edge> min_e(n);
+    min_e[0].w = 0;
+
+    for (int i=0; i<n; ++i) {
+        int v = -1;
+        for (int j = 0; j < n; ++j) {
+            if (!selected[j] && (v == -1 || min_e[j].w < min_e[v].w))
+                v = j;
+        }
+
+        if (min_e[v].w == INF) {
+            cout << "No MST!" << endl;
+            exit(0);
+        }
+
+        selected[v] = true;
+        total_weight += min_e[v].w;
+        if (min_e[v].to != -1)
+            cout << v << " " << min_e[v].to << endl;
+
+        for (int to = 0; to < n; ++to) {
+            if (adj[v][to] < min_e[to].w)
+                min_e[to] = {adj[v][to], v};
+        }
+    }
+
+    cout << total_weight << endl;
+}
+</pre>
+<a href = "https://cp-algorithms.com/graph/mst_prim.html">code link</a>
     </body>
 </html>
 
